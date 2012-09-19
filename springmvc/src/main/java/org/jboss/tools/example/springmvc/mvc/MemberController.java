@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * @author kunwasingh
+ *
+ */
 @Controller
 @RequestMapping(value="/")
 public class MemberController
@@ -19,6 +23,10 @@ public class MemberController
     @Autowired
     private MemberDao memberDao;
 
+    /**
+     * @param model
+     * @return
+     */
     @RequestMapping(method=RequestMethod.GET)
     public String displaySortedMembers(Model model)
     {
@@ -27,6 +35,12 @@ public class MemberController
         return "index";
     }
 
+    /**
+     * @param newMember
+     * @param result
+     * @param model
+     * @return
+     */
     @RequestMapping(method=RequestMethod.POST)
     public String registerNewMember(@Valid @ModelAttribute("newMember") Member newMember, BindingResult result, Model model)
     {
