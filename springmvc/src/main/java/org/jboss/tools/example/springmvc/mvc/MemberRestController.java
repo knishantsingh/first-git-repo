@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author kunwasingh
+ *
+ */
 @Controller
 @RequestMapping("/rest/members")
 public class MemberRestController
@@ -18,12 +22,19 @@ public class MemberRestController
     @Autowired
     private MemberDao memberDao;
 
+    /**
+     * @return
+     */
     @RequestMapping(method=RequestMethod.GET, produces="application/json")
     public @ResponseBody List<Member> listAllMembers()
     {
         return memberDao.findAllOrderedByName();
     }
 
+    /**
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/{id}", method=RequestMethod.GET, produces="application/json")
     public @ResponseBody Member lookupMemberById(@PathVariable("id") Long id)
     {
